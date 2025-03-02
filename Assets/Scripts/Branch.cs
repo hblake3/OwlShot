@@ -12,6 +12,7 @@ public class Branch : MonoBehaviour {
     {
         // Start the branches at random heights
         transform.position = GetNewPosition();
+        gameObject.tag = "Branch"; //branches have the correct "Branch" tag
     }
 
 
