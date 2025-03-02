@@ -14,10 +14,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         view = GetComponent<PlayerView>();
-        if (view == null)
-    {
-        Debug.LogError("PlayerView is not assigned! Make sure it's attached to the same GameObject as PlayerController.");
-    }
         model = new PlayerModel();
 
     }
