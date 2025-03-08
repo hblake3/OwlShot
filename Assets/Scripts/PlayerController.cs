@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 
     public int lives = 3;
     public GameObject[] hearts;
+
+    [SerializeField] GameStateController gameStateController;
     
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,8 @@ public class PlayerController : MonoBehaviour
         if(lives <= 0)
         {
             Debug.Log("Game Over!");
-            //we will add game over logic later
+            gameStateController.SetPausedState(true); // pause the gameplay
+            // Open UI to prompt for replay
         }
     }
     void UpdateHearts()
