@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,12 +12,17 @@ public class PlayerController : MonoBehaviour
     public GameObject[] hearts;
 
     [SerializeField] GameStateController gameStateController;
+    [SerializeField] Text ScoreText; //refer to ScoreText UI
+
+    private int score = 0;
     
     // Start is called before the first frame update
     void Start()
     {
         view = GetComponent<PlayerView>();
         model = new PlayerModel();
+        
+        //UpdateScoreText();
 
     }
 
@@ -35,10 +41,17 @@ public class PlayerController : MonoBehaviour
         if(other.CompareTag("Branch")) //branches have "Branch" tag
         {
             Debug.Log("Branch hit! Losing a life.");
-
             LostLife();
             UpdateHearts();
 
+        }else if(other.CompareTag("Star"))
+        {
+            Debug.Log("Star detected, attempting to collect.");
+            Debug.Log("Star collected!");
+            AddScore(10);
+            //disable the star instead of destroying it
+            other.gameObject.SetActive(false);
+            UpdateScoreText();
         }
     }
 
@@ -62,5 +75,19 @@ public class PlayerController : MonoBehaviour
         {
             hearts[i].SetActive(i < lives); //set hearts based on lives left
         }
+    }
+
+    void AddScore(int points)
+    {
+        score += points;
+        Debug.Log("Score: " + score);
+        UpdateScoreText();
+    }
+
+    void UpdateScoreText()
+    {
+        Debug.Log("Updating score text: " + score); // Ensure this method is called
+
+        ScoreText.text = score.ToString() + " PTS";
     }
 }

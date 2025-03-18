@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Star : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class Star : MonoBehaviour
     public void Start(){
         leftBoundaryX = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)).x;
         rightBoundaryX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, Camera.main.nearClipPlane)).x;
+
+        gameObject.tag = "Star"; //branches have the correct "Star" tag
+
     }
 
     public void SetPosition(){
@@ -59,5 +64,20 @@ public class Star : MonoBehaviour
         else{
             gameObject.SetActive(false);
         }
+    }
+    public void RespawnStar()
+    {
+        // Delay respawn logic here
+        StartCoroutine(RespawnAfterDelay(5f)); // Wait for 5 seconds before respawning
+    }
+
+    private IEnumerator RespawnAfterDelay(float delay)
+    {
+        // Wait for the specified time
+        yield return new WaitForSeconds(delay);
+        
+        // Re-enable the star and reset its position
+        gameObject.SetActive(true);
+        SetPosition(); // Reset the position of the star or implement any other respawn logic
     }
 }

@@ -21,8 +21,6 @@ public class Branch : MonoBehaviour {
         gameObject.tag = "Branch"; //branches have the correct "Branch" tag
         branchManager.CheckBranchPositions();
         star.SetPosition();
-
-        branchRenderer = GetComponent<Renderer>();
     }
 
 
