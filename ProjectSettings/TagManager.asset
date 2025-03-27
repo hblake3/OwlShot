@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Branch
   - Star
+  - PassingZone
   layers:
   - Default
   - TransparentFX

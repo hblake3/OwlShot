@@ -15,34 +15,40 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Text ScoreText; //refer to ScoreText UI
 
     private int score = 0;
-    
+     public bool hasCollidedWithBranch = false;  //flag collision with branch
+    public bool hasPassedBranch = false; //track if branch passes without collision
+
     // Start is called before the first frame update
     void Start()
     {
         view = GetComponent<PlayerView>();
         model = new PlayerModel();
         
-        //UpdateScoreText();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
         float moveInput = Input.GetAxis("Horizontal");
         Vector3 moveDirection = new Vector3(moveInput, 0, 0);
         view.Move(moveDirection, model.speed);
     }
 
     //detect collision w/ branches
+
     private void OnTriggerEnter(Collider other)
     {
 
         if(other.CompareTag("Branch")) //branches have "Branch" tag
         {
             Debug.Log("Branch hit! Losing a life.");
+            hasCollidedWithBranch = true;
+
             LostLife();
             UpdateHearts();
+
 
         }else if(other.CompareTag("Star"))
         {
@@ -52,6 +58,7 @@ public class PlayerController : MonoBehaviour
             //disable the star instead of destroying it
             other.gameObject.SetActive(false);
             UpdateScoreText();
+            
         }
     }
 
@@ -65,9 +72,12 @@ public class PlayerController : MonoBehaviour
         if(lives <= 0)
         {
             Debug.Log("Game Over!");
-            gameStateController.SetPausedState(true); // pause the gameplay
+            //gameStateController.SetPausedState(true); //pause the gameplay
+            gameStateController.DisplayGameOver();
             // Open UI to prompt for replay
         }
+        //reset collision state after handling the penalty
+        hasCollidedWithBranch = false;
     }
     void UpdateHearts()
     {
@@ -77,17 +87,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void AddScore(int points)
+    public void AddScore(int points)
     {
         score += points;
-        Debug.Log("Score: " + score);
+        Debug.Log("Score added: " + points + ". Total score: " + score); // Log when score is added
+
         UpdateScoreText();
     }
 
     void UpdateScoreText()
     {
-        Debug.Log("Updating score text: " + score); // Ensure this method is called
+        Debug.Log("Updating score text: " + score); //ensure this method is called
 
         ScoreText.text = score.ToString() + " PTS";
     }
+
+    //reset branch state when the branch goes off-screen or when necessary
+    void ResetBranchState()
+    {
+        hasPassedBranch = false; //reset the passed flag when a branch is no longer in play
+        hasCollidedWithBranch = false; //reset collision only when a new branch is spawned
+
+    }
+    
 }
