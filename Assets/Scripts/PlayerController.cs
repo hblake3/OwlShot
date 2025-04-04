@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -11,12 +12,13 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     public GameObject[] hearts;
 
-    [SerializeField] GameStateController gameStateController;
+    // [SerializeField] GameStateController gameStateController;
     [SerializeField] Text ScoreText; //refer to ScoreText UI
 
     private int score = 0;
      public bool hasCollidedWithBranch = false;  //flag collision with branch
     public bool hasPassedBranch = false; //track if branch passes without collision
+
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +64,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // void LostLife()
+    // {
+    //     if(lives > 0)
+    //     {
+    //         lives--;
+    //         UpdateHearts();
+    //     }
+    //     if(lives <= 0)
+    //     {
+    //         Debug.Log("Game Over!");
+    //         //gameStateController.SetPausedState(true); //pause the gameplay
+    //         //gameStateController.DisplayGameOver();
+
+    //         //load the Game Over scene
+    //         SceneManager.LoadScene("GameOver");
+
+    //         // Open UI to prompt for replay
+    //     }
+    //     //reset collision state after handling the penalty
+    //     hasCollidedWithBranch = false;
+    // }
+
     void LostLife()
     {
         if(lives > 0)
@@ -69,16 +93,28 @@ public class PlayerController : MonoBehaviour
             lives--;
             UpdateHearts();
         }
+
         if(lives <= 0)
         {
             Debug.Log("Game Over!");
-            //gameStateController.SetPausedState(true); //pause the gameplay
-            gameStateController.DisplayGameOver();
-            // Open UI to prompt for replay
+            StartCoroutine(WaitAndLoadGameOverScene());  //start the coroutine to wait X seconds
         }
         //reset collision state after handling the penalty
         hasCollidedWithBranch = false;
     }
+
+    //wait after loses all hearts before switching to gameover screen
+    IEnumerator WaitAndLoadGameOverScene()
+    {
+        //wait before loading the Game Over scene
+        yield return new WaitForSeconds(0.2f);
+
+        //load the Game Over scene
+        SceneManager.LoadScene("GameOver");
+    }
+
+
+
     void UpdateHearts()
     {
         for(int i=0; i < hearts.Length; i++ )
@@ -90,7 +126,7 @@ public class PlayerController : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
-        Debug.Log("Score added: " + points + ". Total score: " + score); // Log when score is added
+        Debug.Log("Score added: " + points + ". Total score: " + score); //log when score is added
 
         UpdateScoreText();
     }

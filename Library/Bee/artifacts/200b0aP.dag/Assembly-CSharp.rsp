@@ -304,11 +304,18 @@
 "Assets/Scripts/Boundaries.cs"
 "Assets/Scripts/Branch.cs"
 "Assets/Scripts/BranchManager.cs"
+"Assets/Scripts/BranchManager_HardMode.cs"
+"Assets/Scripts/Branch_HardMode.cs"
+"Assets/Scripts/GameOverManager.cs"
 "Assets/Scripts/GameStateController.cs"
+"Assets/Scripts/MoveSpriteStartMenu.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/PlayerController_HardMode.cs"
 "Assets/Scripts/PlayerModel.cs"
 "Assets/Scripts/PlayerView.cs"
 "Assets/Scripts/Star.cs"
+"Assets/Scripts/StartMenu.cs"
+"Assets/Scripts/Star_HardMode.cs"
 -langversion:9.0
 
 /deterministic

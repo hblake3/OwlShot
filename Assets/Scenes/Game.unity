@@ -771,7 +771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 156186458}
-  startButton: {fileID: 743855122}
 --- !u!4 &643114333
 Transform:
   m_ObjectHideFlags: 0
@@ -1034,7 +1033,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &743855123
 RectTransform:
   m_ObjectHideFlags: 0

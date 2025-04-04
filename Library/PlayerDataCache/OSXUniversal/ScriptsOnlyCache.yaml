@@ -4,10 +4,17 @@ ScriptsOnlyBuild:
     - Boundaries
     - Branch
     - BranchManager
+    - BranchManager_HardMode
+    - Branch_HardMode
+    - GameOverManager
     - GameStateController
+    - MoveSpriteStartMenu
     - PlayerController
+    - PlayerController_HardMode
     - PlayerView
     - Star
+    - Star_HardMode
+    - StartMenu
     Unity.TextMeshPro:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -15,9 +22,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -30,6 +34,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.Text
   serializedClasses:
     Unity.TextMeshPro:
@@ -66,11 +71,23 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
+    fullTypeName: StartMenu
+    methodName: LoadGame
+  - assembly: Assembly-CSharp
+    fullTypeName: StartMenu
+    methodName: LoadHardLeve
+  - assembly: Assembly-CSharp
     fullTypeName: GameStateController
     methodName: ResetGame
   - assembly: Assembly-CSharp
+    fullTypeName: GameOverManager
+    methodName: RestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: GameOverManager
+    methodName: LoadMainMenu
+  - assembly: Assembly-CSharp
     fullTypeName: GameStateController
-    methodName: StartGame
+    methodName: ResetGame
   sceneClasses:
     Assets/Scenes/Game.unity:
     - Class: 1
@@ -91,7 +108,145 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 49
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1606}
+    - Class: 114
+      Script: {instanceID: 1658}
+    - Class: 114
+      Script: {instanceID: 1826}
+    - Class: 114
+      Script: {instanceID: 1838}
+    - Class: 114
+      Script: {instanceID: 1874}
+    - Class: 114
+      Script: {instanceID: 1902}
+    - Class: 114
+      Script: {instanceID: 2000}
+    - Class: 114
+      Script: {instanceID: 2102}
+    - Class: 114
+      Script: {instanceID: 2158}
+    - Class: 114
+      Script: {instanceID: 2166}
+    - Class: 114
+      Script: {instanceID: 2494}
+    - Class: 114
+      Script: {instanceID: 2580}
+    - Class: 114
+      Script: {instanceID: 2698}
+    - Class: 114
+      Script: {instanceID: 2840}
+    - Class: 114
+      Script: {instanceID: 2888}
+    - Class: 114
+      Script: {instanceID: 2892}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/GameOver.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1606}
+    - Class: 114
+      Script: {instanceID: 1658}
+    - Class: 114
+      Script: {instanceID: 1838}
+    - Class: 114
+      Script: {instanceID: 1902}
+    - Class: 114
+      Script: {instanceID: 2000}
+    - Class: 114
+      Script: {instanceID: 2166}
+    - Class: 114
+      Script: {instanceID: 2356}
+    - Class: 114
+      Script: {instanceID: 2494}
+    - Class: 114
+      Script: {instanceID: 2580}
+    - Class: 114
+      Script: {instanceID: 2678}
+    - Class: 114
+      Script: {instanceID: 2698}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/HardLevel.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
@@ -110,39 +265,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1712}
-    - Class: 114
       Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 1836}
-    - Class: 114
-      Script: {instanceID: 1864}
-    - Class: 114
-      Script: {instanceID: 1874}
+      Script: {instanceID: 1838}
     - Class: 114
       Script: {instanceID: 1902}
     - Class: 114
       Script: {instanceID: 2000}
     - Class: 114
-      Script: {instanceID: 2102}
-    - Class: 114
-      Script: {instanceID: 2122}
-    - Class: 114
-      Script: {instanceID: 2158}
-    - Class: 114
       Script: {instanceID: 2166}
     - Class: 114
-      Script: {instanceID: 2482}
+      Script: {instanceID: 2494}
     - Class: 114
-      Script: {instanceID: 2492}
-    - Class: 114
-      Script: {instanceID: 2578}
-    - Class: 114
-      Script: {instanceID: 2672}
+      Script: {instanceID: 2580}
     - Class: 114
       Script: {instanceID: 2698}
     - Class: 114
       Script: {instanceID: 2840}
+    - Class: 114
+      Script: {instanceID: 2888}
+    - Class: 114
+      Script: {instanceID: 50898}
+    - Class: 114
+      Script: {instanceID: 50906}
+    - Class: 114
+      Script: {instanceID: 52012}
+    - Class: 114
+      Script: {instanceID: 71750}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -152,6 +301,73 @@ ScriptsOnlyBuild:
     - Class: 196
       Script: {instanceID: 0}
     - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/StartMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1606}
+    - Class: 114
+      Script: {instanceID: 1658}
+    - Class: 114
+      Script: {instanceID: 1712}
+    - Class: 114
+      Script: {instanceID: 1822}
+    - Class: 114
+      Script: {instanceID: 1838}
+    - Class: 114
+      Script: {instanceID: 2000}
+    - Class: 114
+      Script: {instanceID: 2122}
+    - Class: 114
+      Script: {instanceID: 2166}
+    - Class: 114
+      Script: {instanceID: 2484}
+    - Class: 114
+      Script: {instanceID: 2494}
+    - Class: 114
+      Script: {instanceID: 2580}
+    - Class: 114
+      Script: {instanceID: 2678}
+    - Class: 114
+      Script: {instanceID: 2698}
+    - Class: 114
+      Script: {instanceID: 100020}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -251,6 +467,12 @@ ScriptsOnlyBuild:
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp
     namespaceName: 
+    className: StartMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 751e5bae2a317288c2ab58d66687092b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
     className: PlayerView
   - hash:
       serializedVersion: 2
@@ -276,12 +498,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TMP_Dropdown
-  - hash:
-      serializedVersion: 2
-      Hash: 00467fc79d109679e1c4aa3bea43a244
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerController
   - hash:
       serializedVersion: 2
       Hash: 892b5093967522535ba980d28ce42084
@@ -440,6 +656,12 @@ ScriptsOnlyBuild:
     className: PanelEventHandler
   - hash:
       serializedVersion: 2
+      Hash: 975977eab07cd9e0eef51c1bd57f31ca
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameOverManager
+  - hash:
+      serializedVersion: 2
       Hash: 21458b64fdf3b1c35574c2a0e82b859d
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -494,12 +716,6 @@ ScriptsOnlyBuild:
     className: Mask
   - hash:
       serializedVersion: 2
-      Hash: f5cc45edde3f5fbff98ec05b729960c3
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameStateController
-  - hash:
-      serializedVersion: 2
       Hash: 6f67dd406ddfc18c9b3f8a90725c6266
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -540,7 +756,52 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 4dc33df791cfa92eb58297f9aecb4ada
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameStateController
+  - hash:
+      serializedVersion: 2
+      Hash: 697cdc6d3728504d118796ff2a271615
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: b6cb77dce851041865f49a129cac4170
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Branch_HardMode
+  - hash:
+      serializedVersion: 2
+      Hash: 697cdc6d3728504d118796ff2a271615
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerController_HardMode
+  - hash:
+      serializedVersion: 2
+      Hash: b5e63865a621189d2ad8af21e7e72d01
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Star_HardMode
+  - hash:
+      serializedVersion: 2
+      Hash: 9fbd1e0f05413de6f7f425886c13eb1c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BranchManager_HardMode
+  - hash:
+      serializedVersion: 2
+      Hash: 78f6bcfb3187b96069b129c3fa8dc67e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MoveSpriteStartMenu
   platform: 2
   scenePathNames:
+  - Assets/Scenes/StartMenu.unity
   - Assets/Scenes/Game.unity
+  - Assets/Scenes/GameOver.unity
+  - Assets/Scenes/HardLevel.unity
   playerPath: /Users/ploynapaspawachot/Desktop/Gamebuild-OwlShot.app

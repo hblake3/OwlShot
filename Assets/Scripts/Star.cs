@@ -8,6 +8,7 @@ public class Star : MonoBehaviour
 {
     private Vector2 screenBounds;
     [SerializeField] Branch branch; // The branch belonging to a star
+    
     private List<float> edgesList = new List<float>();
     private float leftBoundaryX;
     private float rightBoundaryX;

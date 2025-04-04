@@ -64,12 +64,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/PlayerView.cs" />
+    <Compile Include="Assets/Scripts/MoveSpriteStartMenu.cs" />
     <Compile Include="Assets/Scripts/Branch.cs" />
+    <Compile Include="Assets/Scripts/Star_HardMode.cs" />
     <Compile Include="Assets/Scripts/BranchManager.cs" />
+    <Compile Include="Assets/Scripts/StartMenu.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
+    <Compile Include="Assets/Scripts/Branch_HardMode.cs" />
+    <Compile Include="Assets/Scripts/PlayerController_HardMode.cs" />
     <Compile Include="Assets/Scripts/GameStateController.cs" />
     <Compile Include="Assets/Scripts/Boundaries.cs" />
+    <Compile Include="Assets/Scripts/GameOverManager.cs" />
     <Compile Include="Assets/Scripts/Star.cs" />
+    <Compile Include="Assets/Scripts/BranchManager_HardMode.cs" />
     <Compile Include="Assets/Scripts/PlayerModel.cs" />
   </ItemGroup>
   <ItemGroup>
