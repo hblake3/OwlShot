@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameOverManager : MonoBehaviour
@@ -9,19 +10,25 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] Button restartButton;
     [SerializeField] Button mainMenuButton;
 
-    private int playerScore;
-
     private void Start()
     {
         //playerScore = null;
         restartButton.onClick.AddListener(RestartGame); //add listener for Restart button
         mainMenuButton.onClick.AddListener(LoadMainMenu); //add listener for Main Menu button
 
+        int playerScore = PlayerPrefs.GetInt("PlayerScore", 0);
+
+        // Update the score text
+        if (scoreText != null)
+        {
+            scoreText.text = "Your Score: " + playerScore + " PTS";
+        }
+
     }
 
     public void DisplayGameOver()
     {
-        //scoreText.text = "Your Score: " + playerScore; //update score display
+
         gameOverScreen.SetActive(true); //show the Game Over screen
         Time.timeScale = 0f; //pause the game
     }

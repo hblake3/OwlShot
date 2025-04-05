@@ -12,8 +12,17 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     public GameObject[] hearts;
 
-    // [SerializeField] GameStateController gameStateController;
     [SerializeField] Text ScoreText; //refer to ScoreText UI
+    [SerializeField] private ParticleSystem starCollectEffect;
+    [SerializeField] private AudioClip starCollectSound;
+
+    [SerializeField] private AudioClip branchHitSound;
+    private Renderer playerRenderer;  // Reference to the player's renderer
+    [SerializeField] private Camera mainCamera;  // Reference to the main camera
+    [SerializeField] private float shakeDuration = 0.5f;  // Duration of camera shake
+    [SerializeField] private float shakeMagnitude = 0.1f;  // Intensity of camera shake
+    private Vector3 originalCameraPosition;  // Store the camera's original position
+
 
     private int score = 0;
      public bool hasCollidedWithBranch = false;  //flag collision with branch
@@ -25,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         view = GetComponent<PlayerView>();
         model = new PlayerModel();
-        
+        playerRenderer = GetComponent<Renderer>();
 
     }
 
@@ -51,14 +60,29 @@ public class PlayerController : MonoBehaviour
             LostLife();
             UpdateHearts();
 
+            SoundManager.Instance.PlaySFX(branchHitSound);
+            StartCoroutine(FlashAfterHit());
+            StartCoroutine(ShakeCamera());
 
-        }else if(other.CompareTag("Star"))
+        }
+        else if(other.CompareTag("Star"))
         {
             Debug.Log("Star detected, attempting to collect.");
             Debug.Log("Star collected!");
             AddScore(10);
             //disable the star instead of destroying it
             other.gameObject.SetActive(false);
+            // Play star collect sound
+            SoundManager.Instance.PlaySFX(starCollectSound);
+            // Play particle effect at the star's position
+            if (starCollectEffect != null)
+            {
+                // Move the particle system to the star's position
+                starCollectEffect.transform.position = other.transform.position;
+                // Play the particle system
+                starCollectEffect.Play();
+            }
+
             UpdateScoreText();
             
         }
@@ -97,6 +121,7 @@ public class PlayerController : MonoBehaviour
         if(lives <= 0)
         {
             Debug.Log("Game Over!");
+            PlayerPrefs.SetInt("PlayerScore", score);
             StartCoroutine(WaitAndLoadGameOverScene());  //start the coroutine to wait X seconds
         }
         //reset collision state after handling the penalty
@@ -112,9 +137,6 @@ public class PlayerController : MonoBehaviour
         //load the Game Over scene
         SceneManager.LoadScene("GameOver");
     }
-
-
-
     void UpdateHearts()
     {
         for(int i=0; i < hearts.Length; i++ )
@@ -143,7 +165,62 @@ public class PlayerController : MonoBehaviour
     {
         hasPassedBranch = false; //reset the passed flag when a branch is no longer in play
         hasCollidedWithBranch = false; //reset collision only when a new branch is spawned
-
     }
-    
+
+    IEnumerator FlashAfterHit()
+    {
+        float endTime = Time.time + 2;
+
+        // Continue flashing until the duration is complete
+        while (Time.time < endTime)
+        {
+            // Toggle visibility
+            playerRenderer.enabled = !playerRenderer.enabled;
+
+            // Wait for the flash interval
+            yield return new WaitForSeconds(0.15f);
+        }
+
+        // Ensure player is visible when done
+        playerRenderer.enabled = true;
+    }
+
+    IEnumerator ShakeCamera()
+    {
+        // If no camera is assigned, try to find the main camera
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+            if (mainCamera == null)
+            {
+                Debug.LogWarning("No camera found for screen shake effect!");
+                yield break;  // Exit if no camera is found
+            }
+        }
+
+        // Store the original camera position
+        originalCameraPosition = mainCamera.transform.position;
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < shakeDuration)
+        {
+            // Calculate a random offset within shake magnitude
+            float xOffset = Random.Range(-shakeMagnitude, shakeMagnitude);
+            float yOffset = Random.Range(-shakeMagnitude, shakeMagnitude);
+
+            // Apply the offset to the camera
+            mainCamera.transform.position = originalCameraPosition + new Vector3(xOffset, yOffset, 0f);
+
+            // Update elapsed time
+            elapsedTime += Time.deltaTime;
+
+            // Wait for the next frame
+            yield return null;
+        }
+
+        // Reset camera position when done shaking
+        mainCamera.transform.position = originalCameraPosition;
+    }
+
 }
