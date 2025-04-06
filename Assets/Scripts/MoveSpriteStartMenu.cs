@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MoveSpriteStartMenu : MonoBehaviour
 {
     public RawImage rawImage;
-    public float speed = 100f;
+    public float speed = 200f;
     private RectTransform rectTransform;
 
     private bool movingRight = true;

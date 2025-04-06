@@ -8,13 +8,15 @@ ScriptsOnlyBuild:
     - Branch_HardMode
     - GameOverManager
     - GameStateController
+    - LevelManager
     - MoveSpriteStartMenu
+    - MuteButton
     - PlayerController
     - PlayerController_HardMode
     - PlayerView
+    - SoundManager
     - Star
     - Star_HardMode
-    - StartMenu
     Unity.TextMeshPro:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -23,6 +25,11 @@ ScriptsOnlyBuild:
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -71,10 +78,19 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
   - assembly: Assembly-CSharp
-    fullTypeName: StartMenu
+    fullTypeName: LevelManager
+    methodName: QuitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: LevelManager
     methodName: LoadGame
   - assembly: Assembly-CSharp
-    fullTypeName: StartMenu
+    fullTypeName: SoundManager
+    methodName: ToggleMute
+  - assembly: Assembly-CSharp
+    fullTypeName: MuteButton
+    methodName: ToggleGraphic
+  - assembly: Assembly-CSharp
+    fullTypeName: LevelManager
     methodName: LoadHardLeve
   - assembly: Assembly-CSharp
     fullTypeName: GameStateController
@@ -114,6 +130,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -125,33 +143,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1826}
+      Script: {instanceID: 1824}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1828}
     - Class: 114
-      Script: {instanceID: 1874}
+      Script: {instanceID: 1840}
     - Class: 114
-      Script: {instanceID: 1902}
+      Script: {instanceID: 1868}
     - Class: 114
-      Script: {instanceID: 2000}
+      Script: {instanceID: 1878}
     - Class: 114
-      Script: {instanceID: 2102}
+      Script: {instanceID: 1908}
     - Class: 114
-      Script: {instanceID: 2158}
+      Script: {instanceID: 2006}
     - Class: 114
-      Script: {instanceID: 2166}
+      Script: {instanceID: 2108}
     - Class: 114
-      Script: {instanceID: 2494}
+      Script: {instanceID: 2164}
     - Class: 114
-      Script: {instanceID: 2580}
+      Script: {instanceID: 2172}
     - Class: 114
-      Script: {instanceID: 2698}
+      Script: {instanceID: 2504}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 2888}
+      Script: {instanceID: 2686}
     - Class: 114
-      Script: {instanceID: 2892}
+      Script: {instanceID: 2712}
+    - Class: 114
+      Script: {instanceID: 2858}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -159,6 +179,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -196,23 +220,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1840}
     - Class: 114
-      Script: {instanceID: 1902}
+      Script: {instanceID: 1908}
     - Class: 114
-      Script: {instanceID: 2000}
+      Script: {instanceID: 2006}
     - Class: 114
-      Script: {instanceID: 2166}
+      Script: {instanceID: 2172}
     - Class: 114
-      Script: {instanceID: 2356}
+      Script: {instanceID: 2364}
     - Class: 114
-      Script: {instanceID: 2494}
+      Script: {instanceID: 2504}
     - Class: 114
-      Script: {instanceID: 2580}
+      Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 2678}
+      Script: {instanceID: 2692}
     - Class: 114
-      Script: {instanceID: 2698}
+      Script: {instanceID: 2712}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -254,6 +278,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -265,33 +291,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1826}
+      Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1824}
     - Class: 114
-      Script: {instanceID: 1902}
+      Script: {instanceID: 1828}
     - Class: 114
-      Script: {instanceID: 2000}
+      Script: {instanceID: 1840}
     - Class: 114
-      Script: {instanceID: 2166}
+      Script: {instanceID: 1908}
     - Class: 114
-      Script: {instanceID: 2494}
+      Script: {instanceID: 2006}
     - Class: 114
-      Script: {instanceID: 2580}
+      Script: {instanceID: 2172}
     - Class: 114
-      Script: {instanceID: 2698}
+      Script: {instanceID: 2282}
     - Class: 114
-      Script: {instanceID: 2840}
+      Script: {instanceID: 2352}
     - Class: 114
-      Script: {instanceID: 2888}
+      Script: {instanceID: 2504}
     - Class: 114
-      Script: {instanceID: 50898}
+      Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 50906}
+      Script: {instanceID: 2686}
     - Class: 114
-      Script: {instanceID: 52012}
+      Script: {instanceID: 2712}
     - Class: 114
-      Script: {instanceID: 71750}
+      Script: {instanceID: 2822}
+    - Class: 114
+      Script: {instanceID: 2858}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -299,6 +327,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -327,6 +359,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -338,29 +374,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 1712}
+      Script: {instanceID: 1714}
     - Class: 114
-      Script: {instanceID: 1822}
+      Script: {instanceID: 1824}
     - Class: 114
-      Script: {instanceID: 1838}
+      Script: {instanceID: 1840}
     - Class: 114
-      Script: {instanceID: 2000}
+      Script: {instanceID: 1900}
     - Class: 114
-      Script: {instanceID: 2122}
+      Script: {instanceID: 2006}
     - Class: 114
-      Script: {instanceID: 2166}
+      Script: {instanceID: 2128}
     - Class: 114
-      Script: {instanceID: 2484}
+      Script: {instanceID: 2172}
     - Class: 114
       Script: {instanceID: 2494}
     - Class: 114
-      Script: {instanceID: 2580}
+      Script: {instanceID: 2504}
     - Class: 114
-      Script: {instanceID: 2678}
+      Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 2698}
+      Script: {instanceID: 2648}
     - Class: 114
-      Script: {instanceID: 100020}
+      Script: {instanceID: 2692}
+    - Class: 114
+      Script: {instanceID: 2712}
+    - Class: 114
+      Script: {instanceID: 2744}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -422,6 +462,12 @@ ScriptsOnlyBuild:
     className: CanvasScaler
   - hash:
       serializedVersion: 2
+      Hash: e25db9cc58f969e03f63f7e5eab513b2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerController_HardMode
+  - hash:
+      serializedVersion: 2
       Hash: 6237f92becd6162fa105361ab9ce2a00
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
@@ -464,10 +510,10 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
+      Hash: 97b4515bdb53277178e856928c3ea710
     assemblyName: Assembly-CSharp
     namespaceName: 
-    className: StartMenu
+    className: LevelManager
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -500,6 +546,12 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: e25db9cc58f969e03f63f7e5eab513b2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PlayerController
+  - hash:
+      serializedVersion: 2
       Hash: 892b5093967522535ba980d28ce42084
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -516,6 +568,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: HorizontalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 46fe904af53c2f3b774771757b2014d5
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SoundManager
   - hash:
       serializedVersion: 2
       Hash: 46ffbaea01259c5c7ee677afefd93ea8
@@ -632,6 +690,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: b6cb77dce851041865f49a129cac4170
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Branch_HardMode
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
@@ -654,6 +718,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UIElements
     className: PanelEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: b5e63865a621189d2ad8af21e7e72d01
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Star_HardMode
   - hash:
       serializedVersion: 2
       Hash: 975977eab07cd9e0eef51c1bd57f31ca
@@ -704,6 +774,12 @@ ScriptsOnlyBuild:
     className: StandaloneInputModule
   - hash:
       serializedVersion: 2
+      Hash: 78f6bcfb3187b96069b129c3fa8dc67e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MoveSpriteStartMenu
+  - hash:
+      serializedVersion: 2
       Hash: a03cf6f60c605d858f83449f4b4fc400
     assemblyName: UnityEngine.TestRunner
     namespaceName: UnityEngine.TestTools
@@ -714,6 +790,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 4dc33df791cfa92eb58297f9aecb4ada
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: GameStateController
   - hash:
       serializedVersion: 2
       Hash: 6f67dd406ddfc18c9b3f8a90725c6266
@@ -734,6 +816,12 @@ ScriptsOnlyBuild:
     className: ToggleGroup
   - hash:
       serializedVersion: 2
+      Hash: 797f9bac0b29b024ced99931e47b5992
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: MuteButton
+  - hash:
+      serializedVersion: 2
       Hash: 142264d9d6b0842e37d4aad2e8ff56d0
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -746,6 +834,12 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
+      Hash: 9fbd1e0f05413de6f7f425886c13eb1c
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: BranchManager_HardMode
+  - hash:
+      serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
     assemblyName: Assembly-CSharp
     namespaceName: 
@@ -756,48 +850,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextContainer
-  - hash:
-      serializedVersion: 2
-      Hash: 4dc33df791cfa92eb58297f9aecb4ada
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: GameStateController
-  - hash:
-      serializedVersion: 2
-      Hash: 697cdc6d3728504d118796ff2a271615
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerController
-  - hash:
-      serializedVersion: 2
-      Hash: b6cb77dce851041865f49a129cac4170
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Branch_HardMode
-  - hash:
-      serializedVersion: 2
-      Hash: 697cdc6d3728504d118796ff2a271615
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerController_HardMode
-  - hash:
-      serializedVersion: 2
-      Hash: b5e63865a621189d2ad8af21e7e72d01
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: Star_HardMode
-  - hash:
-      serializedVersion: 2
-      Hash: 9fbd1e0f05413de6f7f425886c13eb1c
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: BranchManager_HardMode
-  - hash:
-      serializedVersion: 2
-      Hash: 78f6bcfb3187b96069b129c3fa8dc67e
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: MoveSpriteStartMenu
   platform: 2
   scenePathNames:
   - Assets/Scenes/StartMenu.unity
